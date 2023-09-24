@@ -84,6 +84,16 @@ impl OuterScope {
         nodes
     }
 
+    /// Clears the list of selected nodes/links. Useful if you want to delete a selected node or link.
+    #[doc(alias = "ClearNodeSelection")]
+    pub fn clear_node_selection(&self) {
+        if self.num_selected_nodes() == 0 {
+            return;
+        }
+
+        unsafe { sys::imnodes_ClearNodeSelection_Nil() };
+    }
+
     /// Get the selected link ids.
     #[doc(alias = "GetSelectedLinks")]
     pub fn selected_links(&self) -> Vec<LinkId> {
