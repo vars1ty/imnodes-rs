@@ -84,6 +84,12 @@ impl OuterScope {
         nodes
     }
 
+    /// Selects a node by the id.
+    #[doc(alias = "SelectNode")]
+    pub fn select_node(&self, node_id: i32) {
+        unsafe { sys::imnodes_SelectNode(node_id) }
+    }
+
     /// Clears the list of selected nodes/links. Useful if you want to delete a selected node or link.
     #[doc(alias = "ClearNodeSelection")]
     pub fn clear_node_selection(&self) {
