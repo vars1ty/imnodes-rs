@@ -124,6 +124,11 @@ pub struct NodeId {
 }
 
 impl NodeId {
+    /// Gets the ID of the node.
+    pub fn get_node_id(&self) -> i32 {
+        self.id
+    }
+
     /// Enable or disable the ability to click and drag a specific node.
     #[doc(alias = "SetNodeDraggable")]
     pub fn set_draggable(&self, draggable: bool) -> &Self {
