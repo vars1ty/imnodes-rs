@@ -63,7 +63,6 @@ impl OuterScope {
     #[doc(alias = "NumSelectedNodes")]
     pub fn num_selected_nodes(&self) -> u32 {
         let num = unsafe { sys::imnodes_NumSelectedNodes() };
-        assert!(num > 0);
         num as u32
     }
 
@@ -73,7 +72,6 @@ impl OuterScope {
     #[doc(alias = "NumSelectedLinks")]
     pub fn num_selected_links(&self) -> u32 {
         let num = unsafe { sys::imnodes_NumSelectedLinks() };
-        assert!(num > 0);
         num as u32
     }
 
