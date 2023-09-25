@@ -4,6 +4,9 @@
 Bindings for [imnodes](https://github.com/Nelarius/imnodes) using [cimnodes](https://github.com/cimgui/cimnodes)
 */
 
+#[macro_use]
+extern crate serde;
+
 use imnodes_sys as sys;
 
 /// export all low level functions
@@ -19,6 +22,7 @@ mod helpers;
 pub use helpers::*;
 
 mod styling;
+use serde::{Deserialize, Serialize};
 pub use styling::*;
 
 mod scopes;
@@ -86,7 +90,7 @@ impl IdentifierGenerator {
 ///
 /// TODO document what precise uniqueness constraints do these have
 #[repr(C)]
-#[derive(Debug, Copy, Clone, Hash, Eq, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, Copy, Clone, Hash, Eq, PartialEq)]
 pub struct AttributeId {
     id: i32,
 }
@@ -104,7 +108,7 @@ impl Into<i32> for AttributeId {
 ///
 /// translated by the current editor panning vector (see [EditorContext::get_panning()] and
 /// [EditorContext::reset_panning()])
-#[derive(Debug, Clone, Copy, Hash, Eq, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, Clone, Copy, Hash, Eq, PartialEq)]
 pub enum CoordinateSystem {
     /// probably what you want
     ///
@@ -118,7 +122,7 @@ pub enum CoordinateSystem {
 
 /// Identifier for a Node
 #[repr(C)]
-#[derive(Debug, Copy, Clone, Hash, Eq, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, Copy, Clone, Hash, Eq, PartialEq)]
 pub struct NodeId {
     id: i32,
 }
@@ -210,7 +214,7 @@ impl Into<i32> for NodeId {
 /// either input or output pin
 ///
 /// like attribute_id in the original source
-#[derive(Debug, Copy, Clone, Hash, Eq, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, Copy, Clone, Hash, Eq, PartialEq)]
 pub struct PinId {
     id: i32,
 }
@@ -239,7 +243,7 @@ impl PinId {
 }
 
 /// Id for an input
-#[derive(Debug, Copy, Clone, Hash, Eq, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, Copy, Clone, Hash, Eq, PartialEq)]
 pub struct InputPinId {
     id: i32,
 }
@@ -257,7 +261,7 @@ impl Into<PinId> for InputPinId {
 }
 
 /// Id for an output
-#[derive(Debug, Copy, Clone, Hash, Eq, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, Copy, Clone, Hash, Eq, PartialEq)]
 pub struct OutputPinId {
     id: i32,
 }
@@ -275,7 +279,7 @@ impl Into<PinId> for OutputPinId {
 }
 
 /// Id for a link
-#[derive(Debug, Copy, Clone, Hash, Eq, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, Copy, Clone, Hash, Eq, PartialEq)]
 pub struct LinkId {
     id: i32,
 }
