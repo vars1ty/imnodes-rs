@@ -123,6 +123,9 @@ pub struct NodeId {
     id: i32,
 }
 
+unsafe impl Send for NodeId {}
+unsafe impl Sync for NodeId {}
+
 impl NodeId {
     /// Gets the ID of the node.
     pub fn get_node_id(&self) -> i32 {
