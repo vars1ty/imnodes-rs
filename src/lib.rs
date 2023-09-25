@@ -7,6 +7,8 @@ Bindings for [imnodes](https://github.com/Nelarius/imnodes) using [cimnodes](htt
 #[macro_use]
 extern crate serde;
 
+use std::fmt::Display;
+
 use imnodes_sys as sys;
 
 /// export all low level functions
@@ -125,6 +127,12 @@ pub enum CoordinateSystem {
 #[derive(Serialize, Deserialize, Debug, Copy, Clone, Hash, Eq, PartialEq)]
 pub struct NodeId {
     id: i32,
+}
+
+impl Display for NodeId {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "NodeID-{}", self.id)
+    }
 }
 
 unsafe impl Send for NodeId {}
