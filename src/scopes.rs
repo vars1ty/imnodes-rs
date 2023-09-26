@@ -294,6 +294,12 @@ impl EditorScope {
     pub fn is_hovered(&self) -> bool {
         unsafe { sys::imnodes_IsEditorHovered() }
     }
+
+    /// Saves the current editor state to a `.ini` file.
+    #[doc(alias = "SaveCurrentEditorStateToIniFile")]
+    pub fn save_editor_state_to_ini_file(&self, file_name: &str) {
+        unsafe { sys::imnodes_SaveCurrentEditorStateToIniFile(file_name.as_ptr() as _) }
+    }
 }
 
 /// Scope_Node = 1 << 2,
