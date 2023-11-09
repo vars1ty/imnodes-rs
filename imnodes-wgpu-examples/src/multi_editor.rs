@@ -120,6 +120,8 @@ pub fn show(ui: &Ui, state: &mut MultiEditState) {
                     ui.text("output");
                 });
             });
+
+            println!("{:?}", curr_node.id.get_position(imnodes::CoordinateSystem::ScreenSpace));
         }
 
         for Link { id, start, end } in links {

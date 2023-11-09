@@ -366,7 +366,7 @@ pub fn get_hovered_node() -> Option<NodeId> {
 
 #[allow(missing_docs)]
 /// the cpp code makes sure to put the input and output types in the right fields
-#[derive(Debug, Copy, Clone, Hash, Eq, PartialEq)]
+#[derive(Debug, Copy, Clone, Hash, Eq, PartialEq, Serialize, Deserialize)]
 pub struct Link {
     pub start_node: NodeId,
     pub end_node: NodeId,
